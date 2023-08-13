@@ -2,18 +2,26 @@ import "../card.css"
 import "../buttons.css"
 import { useContext } from "react"
 import { AppContext } from "../contexts/AppContext"
+import { useNavigate } from "react-router"
 
 export default function ItemCard({data}){
 
+
+  const navigate = useNavigate()
+  
+  const goToDetails = (id) =>{
+     navigate(`/details/${id}`)
+  }
+
    const {  addToStarredMovies, addToWatchLaterList, moviesData, removeFromStarredMovies, watchLaterList, removeFromWatchLaterList  } = useContext(AppContext)
    const starredMovies = moviesData.filter((movie)=>movie.isStarred)
-   console.log(234, watchLaterList)
+ 
     return(
         <div>
       <div class="card">
         <img
           src={data.imageURL}
-          alt="CardImgDownloaded"
+          alt="CardImgDownloaded"  onClick={()=>{goToDetails(data.id)}}
         />
         <div class="card-details">
           <h2>{data.title}</h2>
