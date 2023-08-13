@@ -7,7 +7,7 @@ export default function ItemCard({data}){
 
    const {  addToStarredMovies, addToWatchLaterList, moviesData, removeFromStarredMovies, watchLaterList, removeFromWatchLaterList  } = useContext(AppContext)
    const starredMovies = moviesData.filter((movie)=>movie.isStarred)
-   
+   console.log(234, watchLaterList)
     return(
         <div>
       <div class="card">

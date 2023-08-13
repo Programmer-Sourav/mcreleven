@@ -34,6 +34,7 @@ export function AppProvider({children}){
     }
 
     const addANewMovie = (newMovieDetails) =>{
+        console.log(245, newMovieDetails)
         setMoviesData([...moviesData, newMovieDetails ])
     }
     for(let i = 1990; i<2024; i++){
@@ -58,11 +59,16 @@ export function AppProvider({children}){
     const removeFromWatchLaterList = (watchLaterItemId) =>{
      setWatchLaterList(watchLaterList.filter((movie)=>movie.id!==watchLaterItemId))
     }
+    
+    if(moviesData){
+    const movieDataJson = JSON.stringify(moviesData)
+    localStorage.setItem("moviesData", movieDataJson)
+    }
   
     return(
         <AppContext.Provider value = {{onChangeHandler, moviesData, setMoviesData, onSelectGenre, 
             years, selectedGenreState, selectedRatingsState, selectedYearState, setSelectedGenreState,
             setSelectedRatingsState, setSelectedYearState, ratings, onSelectedYear, onSelectedRating,addANewMovie, 
-            searchState, setSelectedSearchState, addToStarredMovies, addToWatchLaterList, removeFromStarredMovies, removeFromWatchLaterList}}>{children}</AppContext.Provider>
+            searchState, setSelectedSearchState, addToStarredMovies, addToWatchLaterList, removeFromStarredMovies, removeFromWatchLaterList, watchLaterList}}>{children}</AppContext.Provider>
     )
 }

@@ -3,13 +3,19 @@ import "../App.css"
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import ItemCard from "../components/ItemCard";
+import { ChakraProvider } from "@chakra-ui/react";
+import ModalSkeleton from "../components/ModalSkeleton";
 export default function Home(){
 
     const { moviesData,  selectedGenreState, selectedRatingsState, selectedYearState, setSelectedGenreState,
         setSelectedRatingsState, setSelectedYearState, ratings, years, onSelectGenre, onSelectedYear, onSelectedRating, addANewMovie,
         searchState} = useContext(AppContext)
 
-    const allMovieGeneres = moviesData.reduce((accumulatedMovieGenres, currentMovie) =>
+    const persistedJSON = localStorage.getItem("moviesData")
+    const persistedMovies = JSON.parse(persistedJSON)
+    console.log(666, persistedJSON)
+
+    const allMovieGeneres = persistedMovies.reduce((accumulatedMovieGenres, currentMovie) =>
     currentMovie.genre.reduce((accumulatedGenre, genre) =>
     !accumulatedGenre.includes(genre) ?  [...accumulatedGenre, genre] : accumulatedGenre, accumulatedMovieGenres), []);
     
@@ -56,7 +62,11 @@ export default function Home(){
                         <option>{rating}</option>
                     ))}
                 </select>
-                <button className="hover-button" onClick={()=>{addANewMovie()}}>Add A Movie</button> </p>
+                {/* <button className="hover-button" onClick={()=>{addANewMovie()}}>Add A Movie</button>  */}
+                <ChakraProvider>
+                    <ModalSkeleton/>
+                </ChakraProvider>
+                </p>
 
                 {
                     filteredList.map((movie)=>(
