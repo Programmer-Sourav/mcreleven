@@ -10,12 +10,13 @@ export function AppProvider({children}){
     const [selectedYearState, setSelectedYearState]  = useState("Release Year")
     const [selectedGenreState, setSelectedGenreState] = useState("All Genre")
     const [selectedRatingsState, setSelectedRatingsState] = useState("Rating")
+    const [searchState, setSelectedSearchState] = useState("")
 
     let years = [];
     let ratings = [1,2,3,4,5,6,7,8,9,10];
 
-    const onChangeHandler = () => {
-
+    const onChangeHandler = (e) => {
+        setSelectedSearchState(e.target.value)
     }
 
     const onSelectGenre = (e) =>{
@@ -39,6 +40,7 @@ export function AppProvider({children}){
     return(
         <AppContext.Provider value = {{onChangeHandler, moviesData, setMoviesData, onSelectGenre, 
             years, selectedGenreState, selectedRatingsState, selectedYearState, setSelectedGenreState,
-            setSelectedRatingsState, setSelectedYearState, ratings, onSelectedYear, onSelectedRating,addANewMovie}}>{children}</AppContext.Provider>
+            setSelectedRatingsState, setSelectedYearState, ratings, onSelectedYear, onSelectedRating,addANewMovie, 
+            searchState, setSelectedSearchState}}>{children}</AppContext.Provider>
     )
 }

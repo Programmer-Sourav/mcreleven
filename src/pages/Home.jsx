@@ -6,7 +6,8 @@ import ItemCard from "../components/ItemCard";
 export default function Home(){
 
     const { moviesData,  selectedGenreState, selectedRatingsState, selectedYearState, setSelectedGenreState,
-        setSelectedRatingsState, setSelectedYearState, ratings, years, onSelectGenre, onSelectedYear, onSelectedRating, addANewMovie } = useContext(AppContext)
+        setSelectedRatingsState, setSelectedYearState, ratings, years, onSelectGenre, onSelectedYear, onSelectedRating, addANewMovie,
+        searchState } = useContext(AppContext)
 
     const allMovieGeneres = moviesData.reduce((accumulatedMovieGenres, currentMovie) =>
     currentMovie.genre.reduce((accumulatedGenre, genre) =>
@@ -26,8 +27,13 @@ export default function Home(){
     if(selectedRatingsState)
     filteredList = selectedRatingsState==="Rating" ? moviesData : filteredList.filter((movie)=>movie.rating===parseInt(selectedRatingsState))
 
+   //search
+   if(searchState)
+   filteredList = filteredList.filter((movie)=>movie.title.toLowerCase().includes(searchState.toLowerCase()) ||
+           movie.director.toLowerCase().includes(searchState.toLowerCase()) ||
+           movie.cast.find((eachCast)=>eachCast.toLowerCase().includes(searchState.toLowerCase())))
 
-    console.log(1234, filteredList, selectedGenreState, selectedYearState, selectedRatingsState)
+    console.log(1234, filteredList, selectedGenreState, selectedYearState, selectedRatingsState, searchState)
     return(
         <div>
             {
