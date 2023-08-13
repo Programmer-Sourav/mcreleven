@@ -20,11 +20,11 @@ export default function Home(){
     let filteredList = moviesData
 
     if(selectedGenreState)
-    filteredList = selectedGenreState==="All Genre" ? moviesData : moviesData.filter((movie)=>movie.genre.includes(selectedGenreState))
+    filteredList = selectedGenreState==="All Genre" ? moviesData : filteredList.filter((movie)=>movie.genre.includes(selectedGenreState))
     if(selectedYearState)
-    filteredList = selectedYearState==="Release Year" ? moviesData : moviesData.filter((movie)=>movie.year===parseInt(selectedYearState))
+    filteredList = selectedYearState==="Release Year" ? moviesData : filteredList.filter((movie)=>movie.year===parseInt(selectedYearState))
     if(selectedRatingsState)
-    filteredList = selectedRatingsState==="Rating" ? moviesData : moviesData.filter((movie)=>movie.rating===parseInt(selectedRatingsState))
+    filteredList = selectedRatingsState==="Rating" ? moviesData : filteredList.filter((movie)=>movie.rating===parseInt(selectedRatingsState))
 
 
     console.log(1234, filteredList, selectedGenreState, selectedYearState, selectedRatingsState)
