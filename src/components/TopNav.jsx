@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import "./topnav.css";
 import { AppContext } from "../contexts/AppContext";
+import { Link } from "react-router-dom";
 
 export default function TopNav() {
    const { onChangeHandler, searchState } = useContext(AppContext)
@@ -14,18 +15,17 @@ export default function TopNav() {
           </li>
         <ul class="nav-links">
           <li>
+              <i class="fas fa-home"></i> <Link to="/">Movies</Link>
+            
+          </li>
+          <li>
             <a href="#">
-              <i class="fas fa-home"></i> Movies
+              <i class="fas fa-user"></i> <Link to="/watchlater">Watch Later</Link>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="fas fa-user"></i> Watchlist
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fas fa-envelope"></i> Starred Movies
+              <i class="fas fa-envelope"></i> <Link to="/starredmovieslist">Starred Movies</Link>
             </a>
           </li>
         </ul>

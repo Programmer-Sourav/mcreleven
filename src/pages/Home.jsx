@@ -7,7 +7,7 @@ export default function Home(){
 
     const { moviesData,  selectedGenreState, selectedRatingsState, selectedYearState, setSelectedGenreState,
         setSelectedRatingsState, setSelectedYearState, ratings, years, onSelectGenre, onSelectedYear, onSelectedRating, addANewMovie,
-        searchState } = useContext(AppContext)
+        searchState} = useContext(AppContext)
 
     const allMovieGeneres = moviesData.reduce((accumulatedMovieGenres, currentMovie) =>
     currentMovie.genre.reduce((accumulatedGenre, genre) =>
@@ -33,7 +33,7 @@ export default function Home(){
            movie.director.toLowerCase().includes(searchState.toLowerCase()) ||
            movie.cast.find((eachCast)=>eachCast.toLowerCase().includes(searchState.toLowerCase())))
 
-    console.log(1234, filteredList, selectedGenreState, selectedYearState, selectedRatingsState, searchState)
+    
     return(
         <div>
             {

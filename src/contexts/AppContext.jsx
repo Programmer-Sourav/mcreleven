@@ -11,6 +11,8 @@ export function AppProvider({children}){
     const [selectedGenreState, setSelectedGenreState] = useState("All Genre")
     const [selectedRatingsState, setSelectedRatingsState] = useState("Rating")
     const [searchState, setSelectedSearchState] = useState("")
+    //const [starredMovies, setStarredMovies] = useState([])
+    const [watchLaterList, setWatchLaterList] = useState([])
 
     let years = [];
     let ratings = [1,2,3,4,5,6,7,8,9,10];
@@ -37,10 +39,30 @@ export function AppProvider({children}){
     for(let i = 1990; i<2024; i++){
         years = [...years, i]
     }
+
+    const addToWatchLaterList = (newMovieToWatchLater) =>{
+      setWatchLaterList([...watchLaterList, newMovieToWatchLater])
+    }
+    console.log(watchLaterList)
+    const addToStarredMovies = (newStarredMovieId) =>{
+      //setStarredMovies([...starredMovies, newStarredMovie])
+      //star and watch movies are same functionality... just implementing in two different ways
+      const updated = moviesData.map((movie)=>(movie.id===newStarredMovieId? {...movie, isStarred: true} : movie))
+      setMoviesData(updated)
+    }
+
+    const removeFromStarredMovies = (newStarredMovieId) =>{
+     setMoviesData(moviesData.map((movie)=>movie.id===newStarredMovieId ? {...movie, isStarred: false} : movie))
+    }
+
+    const removeFromWatchLaterList = (watchLaterItemId) =>{
+     setWatchLaterList(watchLaterList.filter((movie)=>movie.id!==watchLaterItemId))
+    }
+  
     return(
         <AppContext.Provider value = {{onChangeHandler, moviesData, setMoviesData, onSelectGenre, 
             years, selectedGenreState, selectedRatingsState, selectedYearState, setSelectedGenreState,
             setSelectedRatingsState, setSelectedYearState, ratings, onSelectedYear, onSelectedRating,addANewMovie, 
-            searchState, setSelectedSearchState}}>{children}</AppContext.Provider>
+            searchState, setSelectedSearchState, addToStarredMovies, addToWatchLaterList, removeFromStarredMovies, removeFromWatchLaterList}}>{children}</AppContext.Provider>
     )
 }
