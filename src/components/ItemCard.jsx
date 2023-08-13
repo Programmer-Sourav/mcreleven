@@ -1,16 +1,23 @@
-export default function ItemCard(){
+import "../card.css"
+import "../buttons.css"
+
+export default function ItemCard({data}){
 
 
     return(
         <div>
       <div class="card">
         <img
-          src="https://lh3.googleusercontent.com/hwau7OVWx96XaME5KpRuJ0I_MscrerK6SbRH1UwYHYaxIDQQtn7RZK02LDSfBzCreidFgDsJeXyqDct6EZiH6vsV=w640-h400-e365-rj-sc0x00ffffff"
-          alt="Card Image"
+          src={data.imageURL}
+          alt="CardImgDownloaded"
         />
         <div class="card-details">
-          <h2>Title</h2>
-          <p>Description</p>
+          <h2>{data.title}</h2>
+          <p>{data.summary}</p>
+        </div>
+        <div>
+          <button className="hover-button" onClick={()=>{}}>Star</button>
+          <button className="hover-button" onClick={()=>{}}>Add To Watchlist</button>
         </div>
       </div>
     </div>
