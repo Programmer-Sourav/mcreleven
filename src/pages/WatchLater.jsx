@@ -4,8 +4,16 @@ import ItemCard from "../components/ItemCard"
 
 export default function WatchLater(){
 
-   const { watchLaterList } = useContext(AppContext)
+   let { watchLaterList } = useContext(AppContext)
 
+  
+   const persistedJSON = localStorage.getItem("watchLaterData")
+   let watchLaterPersisted = JSON.parse(persistedJSON)
+   
+   if(watchLaterList.length===0)
+    watchLaterList = watchLaterPersisted
+    
+   
     return(
         <div> 
             {

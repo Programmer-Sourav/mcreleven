@@ -64,6 +64,11 @@ export function AppProvider({children}){
     const movieDataJson = JSON.stringify(moviesData)
     localStorage.setItem("moviesData", movieDataJson)
     }
+
+    if(watchLaterList){
+        const watchLaterJson = JSON.stringify(watchLaterList)
+        localStorage.setItem("watchLaterData", watchLaterJson)
+        }
   
     return(
         <AppContext.Provider value = {{onChangeHandler, moviesData, setMoviesData, onSelectGenre, 
