@@ -1,0 +1,31 @@
+.card {
+    width: 352px;
+    height: 60%;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  .card-details {
+    padding: 16px;
+  }
+  .card-details h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card-details p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+  }
+  
+  .card-details a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  

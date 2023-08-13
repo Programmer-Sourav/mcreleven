@@ -1,0 +1,26 @@
+.hover-button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+    margin: 16px;
+  }
+  
+  .hover-button:hover {
+    background-color: #0056b3;
+  }
+
+
+  .basic-button {
+    padding: 8px;
+    background-color: goldenrod;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
