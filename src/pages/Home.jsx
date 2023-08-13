@@ -13,7 +13,7 @@ export default function Home(){
 
     const persistedJSON = localStorage.getItem("moviesData")
     const persistedMovies = JSON.parse(persistedJSON)
-    console.log(666, persistedJSON)
+   
 
     const allMovieGeneres = persistedMovies.reduce((accumulatedMovieGenres, currentMovie) =>
     currentMovie.genre.reduce((accumulatedGenre, genre) =>
@@ -27,12 +27,12 @@ export default function Home(){
     let filteredList = moviesData
 
     if(selectedGenreState)
-    filteredList = selectedGenreState==="All Genre" ? moviesData : filteredList.filter((movie)=>movie.genre.includes(selectedGenreState))
+    filteredList = selectedGenreState==="All Genre" ? filteredList : filteredList.filter((movie)=>movie.genre.includes(selectedGenreState))
     if(selectedYearState)
-    filteredList = selectedYearState==="Release Year" ? moviesData : filteredList.filter((movie)=>movie.year===parseInt(selectedYearState))
+    filteredList = selectedYearState==="Release Year" ? filteredList : filteredList.filter((movie)=>movie.year===parseInt(selectedYearState))
     if(selectedRatingsState)
-    filteredList = selectedRatingsState==="Rating" ? moviesData : filteredList.filter((movie)=>movie.rating===parseInt(selectedRatingsState))
-
+    filteredList = selectedRatingsState==="Rating" ? filteredList : filteredList.filter((movie)=>movie.rating===parseInt(selectedRatingsState))
+    console.log(234, selectedGenreState, filteredList)
    //search
    if(searchState)
    filteredList = filteredList.filter((movie)=>movie.title.toLowerCase().includes(searchState.toLowerCase()) ||
