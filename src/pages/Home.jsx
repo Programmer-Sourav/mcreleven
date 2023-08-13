@@ -3,6 +3,10 @@ export default function Home(){
 
 
     return(
-        <div></div>
+        <div>
+            {
+                <p>Welcome.. MCR Eleven..Snath</p>
+            }
+        </div>
     )
 }
